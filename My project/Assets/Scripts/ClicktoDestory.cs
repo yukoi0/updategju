@@ -1,25 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-public class ClicktoDestory : MonoBehaviour
+using UnityEngine.UI;
+public class ScoreTracker : MonoBehaviour
 {
-    private ScoreTracker scoreTracker; // Reference to the ScoreTracker script
+    public static int scoreValue = 0;
+    public Text scoreText;
 
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
-        // Find the ScoreTracker script in the scene
-        scoreTracker = FindObjectOfType<ScoreTracker>();
-        if (scoreTracker == null)
-        {
-            Debug.LogError("ScoreTracker script not found!");
-        }
+        
     }
 
-    private void OnMouseDown()
+    // Update is called once per frame
+    void Update()
     {
-        Destroy(gameObject);
-        if (scoreTracker != null)
-        {
-            scoreTracker.IncreaseScore(); // Call the IncreaseScore method from ScoreTracker
-        }
+
+        scoreText.text = "hello";
     }
+
 }
