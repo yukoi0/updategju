@@ -1,24 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-public class ScoreTracker : MonoBehaviour
+
+public class ClicktoDestroy : MonoBehaviour
 {
-    public static int scoreValue = 0;
-    public Text scoreText;
+    public event System.Action ObjectDestroyed;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
-        
+        ObjectDestroyed?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-
-        scoreText.text = "hello";
+        Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if (gameObject == null) // Check if the GameObject is destroyed
+        {
+            Debug.Log("hi");
+        }
+    }
+   /* private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("hi");
+    }*/
 }
+
